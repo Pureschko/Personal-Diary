@@ -8,7 +8,12 @@ function App() {
             <main style={{ display: "flex", gap: "10px", padding: "100px" }}>
                 <Button title="HI" />
 
-                <Button title="Open Sample of Diary Entry" />
+                <Button
+                    title="Open Sample of Diary Entry"
+                    onClicked={() => {
+                        console.log("Open Sample of Diary Entry");
+                    }}
+                />
             </main>
 
             <footer />
