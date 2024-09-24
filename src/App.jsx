@@ -1,3 +1,4 @@
+
 import { DiaryEntryCard, Modal } from "./Container";
 
 import { Button } from "./Button";
@@ -115,3 +116,17 @@ function App() {
 }
 
 export default App;
+
+import { CardContainer } from "./CardContainer.jsx";
+import Nav from "./Nav.jsx";
+import StoreDataForm from "./StoreDataForm.jsx";
+
+export default function App() {
+  return (
+    <>
+      <Nav />
+      <CardContainer />
+    </>
+  );
+}
+
