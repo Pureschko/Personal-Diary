@@ -1,15 +1,19 @@
-
 import { DiaryEntryCard, Modal } from "./Container";
 
 import { Button } from "./Button";
+import { CardContainer } from "./CardContainer";
+import Nav from "./Nav.jsx";
 import { useState } from "react";
 
-function App() {
+export default function App() {
     const [isDiaryEnryCardHidden, setIsDiaryEnryCardHidden] = useState(true);
 
     return (
         <div>
-            <header />
+            <header>
+                <Nav />
+                <CardContainer />
+            </header>
 
             <main
                 style={{
@@ -23,15 +27,6 @@ function App() {
                     title="Open Sample of Diary Entry"
                     onClicked={() => setIsDiaryEnryCardHidden(false)}
                 />
-
-                {/* <DiaryEntryCard
-                    title="I am a modal"
-                    isHidden={isDiaryEnryCardHidden}
-                    entryDate={new Date()}
-                    imageUrl="/assets/image1.jpg"
-                    entryContent="Sunt officia do minim et nostrud dolore nulla ut sint quis qui est. Dolor id do nisi ea nulla aliquip deserunt voluptate non. Culpa et cupidatat adipisicing consequat enim sunt commodo proident ex est ad consectetur quis sit. Ea Lorem occaecat proident nisi ullamco laborum. Adipisicing do duis qui aliqua nulla deserunt exercitation cillum anim laboris reprehenderit incididunt cupidatat consectetur. Do duis laboris velit elit deserunt. Exercitation ad ullamco ullamco fugiat ut elit incididunt id proident do ut."
-                    onCloseClicked={() => setIsDiaryEnryCardHidden(true)}
-                /> */}
 
                 <p>
                     Magna consequat et id cupidatat nulla ex cillum anim elit
@@ -114,19 +109,3 @@ function App() {
         </div>
     );
 }
-
-export default App;
-
-import { CardContainer } from "./CardContainer.jsx";
-import Nav from "./Nav.jsx";
-import StoreDataForm from "./StoreDataForm.jsx";
-
-export default function App() {
-  return (
-    <>
-      <Nav />
-      <CardContainer />
-    </>
-  );
-}
-
