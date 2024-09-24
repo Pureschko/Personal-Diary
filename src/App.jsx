@@ -1,19 +1,9 @@
 import { DiaryEntryCard, Modal } from "./Container";
 
 import { Button } from "./Button";
-import { CardContainer } from "./CardContainer.jsx";
+import { CardContainer } from "./CardContainer";
 import Nav from "./Nav.jsx";
-import StoreDataForm from "./StoreDataForm.jsx";
 import { useState } from "react";
-
-// export default function App() {
-//     return (
-//         <>
-//             <Nav />
-//             <CardContainer />
-//         </>
-//     );
-// }
 
 export default function App() {
     const [isDiaryEnryCardHidden, setIsDiaryEnryCardHidden] = useState(true);
