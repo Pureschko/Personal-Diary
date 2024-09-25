@@ -1,130 +1,98 @@
 import React, { useState } from "react";
 
 const StoreDataForm = ({ onClose }) => {
-  const [imageUrl, setImageUrl] = useState("");
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-  const [date, setDate] = useState(new Date().toISOString().slice(0, 10)); // Default to today's date
+  const [title, setTitle] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
+  const [content, setContent] = useState('');
+  const [date, setDate] = useState(new Date().toISOString().slice(0, 10)); // Set current date
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    // Get existing diary data from localStorage
-    const existingData = JSON.parse(localStorage.getItem("diaryData")) || [];
-
-    // Create new entry object
-    const newEntry = {
-      imageUrl,
+  // Function for adding a new publication
+  const addPost = () => {
+    // Create a new post
+    const newPost = {
       title,
+      imageUrl,
       content,
-      date, // Include date in the entry
+      date,
     };
 
-    // Add new entry to existing data
-    const updatedData = [...existingData, newEntry];
+    const storedData = JSON.parse(localStorage.getItem('diaryData')) || []; // Get current records from localStorage
+    const updatedData = [...storedData, newPost]; // Add a new post to existing entries
+    localStorage.setItem('diaryData', JSON.stringify(updatedData)); // Update localStorage with new data
 
-    // Store updated data back in localStorage
-    localStorage.setItem("diaryData", JSON.stringify(updatedData));
+    // Clear form fields
+    setTitle('');
+    setImageUrl('');
+    setContent('');
+    setDate(new Date().toISOString().slice(0, 10)); // Reset date to current
 
-    // Clear form fields after submission
-    setImageUrl("");
-    setTitle("");
-    setContent("");
-    setDate(new Date().toISOString().slice(0, 10)); // Reset date to today
+    onClose();// Close the form
 
-    //alert("Data saved successfully!");
-    //refreshData();
-    //onClose(); // Close the form after submission
-    //window.location.reload();
+    window.location.reload(); // Reload the page after adding a publication
+  };
+
+  // Function to handle form submission
+  const handleSubmit = (e) => {
+    e.preventDefault(); // Prevent page reload when form is submitted
+    addPost(); // Adding a publication
   };
 
   return (
-    <div>
-      <h2 className="text-xl font-bold mb-4">Add New Diary Entry</h2>
-
-      <form onSubmit={handleSubmit}>
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="imageUrl"
-          >
-            Image URL
-          </label>
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center" onClick={onClose}>
+      <div className="relative bg-white p-6 rounded-lg" onClick={(e) => e.stopPropagation()}>
+        <form className="space-y-4 p-6 rounded"
+          onSubmit={handleSubmit} // Use handleSubmit to handle form submission
+        >
+          <h2 className="text-2xl font-bold mb-4 text-gray-800 text-center">Add publication</h2>
+          <p className="font-bold text-gray-800 mb-1">Title</p>
           <input
             type="text"
-            id="imageUrl"
-            value={imageUrl}
-            onChange={(e) => setImageUrl(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg"
-            placeholder="Enter image URL"
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="title"
-          >
-            Title
-          </label>
-          <input
-            type="text"
-            id="title"
+            placeholder="Title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg"
-            placeholder="Enter title"
+            className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
             required
           />
-        </div>
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="content"
-          >
-            Content
-          </label>
-          <textarea
-            id="content"
+          <p className="font-bold text-gray-800 mb-1">Picture</p>
+          <input
+            type="text"
+            placeholder="URL picture"
+            value={imageUrl}
+            onChange={(e) => setImageUrl(e.target.value)}
+            className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
+            required
+          />
+          <p className="font-bold text-gray-800 mb-1">Content</p>
+          <input
+            type="text"
+            placeholder="Add text"
             value={content}
             onChange={(e) => setContent(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg"
-            placeholder="Enter content"
+            className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
             required
           />
-        </div>
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="date"
-          >
-            Date
-          </label>
+          <p className="font-bold text-gray-800 mb-1">Date</p>
           <input
             type="date"
-            id="date"
             value={date}
             onChange={(e) => setDate(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+            className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
             required
           />
-        </div>
+          <button
+            type="submit"
+            className="bg-cyan-600 text-white py-2 px-4 rounded hover:bg-cyan-800 transition-colors"
+          >
+            Add publication
+          </button>
+        </form>
         <button
-          type="submit"
-          className="w-full bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
+          onClick={onClose}
+          className="absolute top-2 right-2 bg-gray-200 hover:bg-gray-300 text-gray-600 rounded-full w-8 h-8 flex items-center justify-center"
         >
-          Save Entry
+          ✕
         </button>
-        <button
-          onClick={() => {
-            onClose(); // Call the close function to hide the form
-            window.location.reload(); // Reload the page
-          }}
-          className="w-full mt-2 bg-slate-400 text-white px-4 py-2 rounded-lg hover:bg-red-600"
-        >
-          Close
-        </button>
-      </form>
+      </div>
     </div>
   );
 };
