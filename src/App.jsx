@@ -1,6 +1,5 @@
 import { DiaryEntryCard, Modal } from "./Container";
 
-import { Button } from "./Button";
 import { CardContainer } from "./CardContainer";
 import Nav from "./Nav.jsx";
 import { useState } from "react";
@@ -12,7 +11,12 @@ export default function App() {
         <div>
             <header>
                 <Nav />
-                <CardContainer />
+                <CardContainer
+                    onPreviewClicked={entryId => {
+                        console.log(entryId);
+                        setIsDiaryEnryCardHidden(false);
+                    }}
+                />
             </header>
 
             <main
@@ -23,11 +27,6 @@ export default function App() {
                     padding: "100px",
                 }}
             >
-                <Button
-                    title="Open Sample of Diary Entry"
-                    onClicked={() => setIsDiaryEnryCardHidden(false)}
-                />
-
                 <p>
                     Magna consequat et id cupidatat nulla ex cillum anim elit
                     nisi. Ex fugiat consectetur proident veniam exercitation

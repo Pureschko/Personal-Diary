@@ -1,8 +1,9 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 
 import { Card } from "./Card";
 
-export const CardContainer = () => {
+export const CardContainer = ({ onPreviewClicked }) => {
     const [fetchedData, setFetchedData] = useState([]); // Initialize with an empty array
 
     const fetchData = async () => {
@@ -44,6 +45,9 @@ export const CardContainer = () => {
                                     title={data.title} // This should be defined
                                     content={data.content} // This should be defined
                                     date={data.date} // Use the stored date
+                                    onPreviewClicked={() =>
+                                        onPreviewClicked(index)
+                                    }
                                 />
                             );
                         })
