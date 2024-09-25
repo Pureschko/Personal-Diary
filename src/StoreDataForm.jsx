@@ -1,41 +1,42 @@
-import React, { useState } from "react";
+/* eslint-disable react/prop-types */
+import { useState } from "react";
 
 const StoreDataForm = ({ onClose }) => {
-  const [title, setTitle] = useState('');
-  const [imageUrl, setImageUrl] = useState('');
-  const [content, setContent] = useState('');
-  const [date, setDate] = useState(new Date().toISOString().slice(0, 10)); // Set current date
+    const [title, setTitle] = useState("");
+    const [imageUrl, setImageUrl] = useState("");
+    const [content, setContent] = useState("");
+    const [date, setDate] = useState(new Date().toISOString().slice(0, 10)); // Set current date
 
-  // Function for adding a new publication
-  const addPost = () => {
-    // Create a new post
-    const newPost = {
-      title,
-      imageUrl,
-      content,
-      date,
+    // FIXME naming
+    // Function for adding a new publication
+    const addPost = () => {
+        // Create a new post
+        const newPost = {
+            id: Date.now(),
+            title,
+            imageUrl,
+            content,
+            date,
+        };
+
+        localStorage.setItem(newPost.id, JSON.stringify(newPost));
+
+        // Clear form fields
+        setTitle("");
+        setImageUrl("");
+        setContent("");
+        setDate(new Date().toISOString().slice(0, 10)); // Reset date to current
+
+        onClose(); // Close the form
+
+        window.location.reload(); // Reload the page after adding a publication
     };
 
-    const storedData = JSON.parse(localStorage.getItem('diaryData')) || []; // Get current records from localStorage
-    const updatedData = [newPost, ...storedData]; // Add a new post to existing entries
-    localStorage.setItem('diaryData', JSON.stringify(updatedData)); // Update localStorage with new data
-
-    // Clear form fields
-    setTitle('');
-    setImageUrl('');
-    setContent('');
-    setDate(new Date().toISOString().slice(0, 10)); // Reset date to current
-
-    onClose();// Close the form
-
-    window.location.reload(); // Reload the page after adding a publication
-  };
-
-  // Function to handle form submission
-  const handleSubmit = (e) => {
-    e.preventDefault(); // Prevent page reload when form is submitted
-    addPost(); // Adding a publication
-  };
+    // Function to handle form submission
+    const handleSubmit = e => {
+        e.preventDefault(); // Prevent page reload when form is submitted
+        addPost(); // Adding a publication
+    };
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center" onClick={onClose}>
