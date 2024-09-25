@@ -5,7 +5,7 @@ import Nav from "./Nav.jsx";
 import { useState } from "react";
 
 export default function App() {
-    const [isDiaryEnryCardHidden, setIsDiaryEnryCardHidden] = useState(true);
+    const [isDiaryEntryCardHidden, setIsDiaryEntryCardHidden] = useState(true);
 
     return (
         <div>
@@ -14,7 +14,7 @@ export default function App() {
                 <CardContainer
                     onPreviewClicked={entryId => {
                         console.log(entryId);
-                        setIsDiaryEnryCardHidden(false);
+                        setIsDiaryEntryCardHidden(false);
                     }}
                 />
             </header>
@@ -95,8 +95,8 @@ export default function App() {
             <footer />
 
             <Modal
-                isHidden={isDiaryEnryCardHidden}
-                onCloseClicked={() => setIsDiaryEnryCardHidden(true)}
+                isHidden={isDiaryEntryCardHidden}
+                onCloseClicked={() => setIsDiaryEntryCardHidden(true)}
             >
                 <DiaryEntryCard
                     title="Your Diary Entry"
