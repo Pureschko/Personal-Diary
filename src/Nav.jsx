@@ -17,18 +17,18 @@ const Nav = () => {
             >
                 {/* Navbar */}
 
-                <div className="w-full max-w-screen-2xl rounded-lg mx-auto ">
+                <div className="bg-background-color w-full max-w-screen-2xl rounded-lg mx-auto ">
                     <nav className="bg-white shadow-md rounded-lg ">
-                        <div className="rounded-lg flex bg-[#0E0B14] ring-4 ring-blue-500 ring-inset p-6 justify-between items-center">
+                        <div className="flex bg-background-color ring-inset p-6 justify-between items-center">
                             {/* Title on the left */}
-                            <a className="text-2xl font-bold text-blue-600">
-                                Diarydata
+                            <a className="text-2xl font-bold text-slate-200">
+                            Dev's cave
                             </a>
 
                             {/* Button on the right */}
                             <button
                                 onClick={handleAddEntryClick}
-                                className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-200"
+                                className="px-4 py-2 bg-button-color text-white rounded-lg hover:bg-button-hover transition duration-200"
                             >
                                 Add Entry
                             </button>

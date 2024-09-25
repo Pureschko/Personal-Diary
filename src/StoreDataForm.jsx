@@ -39,44 +39,52 @@ const StoreDataForm = ({ onClose }) => {
     };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center" onClick={onClose}>
+    <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center" 
+    style={{
+      background: "rgba(24, 26, 42, 0.8)", 
+      boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
+      backdropFilter: "blur(7.2px)", 
+      WebkitBackdropFilter: "blur(7.2px)", 
+      zIndex: 1000,
+    }}
+    onClick={onClose}>
       <div className="relative bg-card-color p-6 rounded-lg w-[50vw] max-w-lg" onClick={(e) => e.stopPropagation()}>
         <form className="space-y-6 p-6 rounded"
           onSubmit={handleSubmit} // Use handleSubmit to handle form submission
         >
           <h2 className="text-2xl font-semibold mb-4 text-slate-200 text-center">Add publication</h2>
           <div>
-          <p className="font-medium text-slate-200 mb-2">Title</p>
+          <p className="font-medium text-slate-300 text-sm mb-1">Title</p>
           <input
             type="text"
-            placeholder="Title"
+            placeholder="Enter the title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="bg-slate-custom text-slate-200 font-light placeholder-placeholder-color w-full p-2 border border-input-borders rounded focus:outline-none focus:border-button-color"
+            className="bg-slate-custom text-slate-300 font-light placeholder-placeholder-color w-full p-2 border border-input-borders rounded focus:outline-none focus:border-button-color"
             required
           /></div>
           <div>
-          <p className="font-medium text-slate-200 mb-2">Picture</p>
+          <p className="font-medium text-slate-300 text-sm mb-1">Picture</p>
           <input
             type="text"
             placeholder="URL picture"
             value={imageUrl}
             onChange={(e) => setImageUrl(e.target.value)}
-            className="bg-slate-custom text-slate-200 font-light placeholder-placeholder-color w-full p-2 border border-input-borders rounded focus:outline-none focus:border-button-color"
+            className="bg-slate-custom text-slate-300 font-light placeholder-placeholder-color w-full p-2 border border-input-borders rounded focus:outline-none focus:border-button-color"
             required
           /></div>
           <div>
-          <p className="font-medium text-slate-200 mb-2">Content</p>
+          <p className="font-medium text-slate-300 text-sm mb-1">Content</p>
           <input
             type="text"
-            placeholder="Add text"
+            placeholder="Enter the text"
             value={content}
             onChange={(e) => setContent(e.target.value)}
-            className="bg-slate-custom text-slate-200 font-light placeholder-placeholder-color w-full p-2 border border-input-borders rounded focus:outline-none focus:border-button-color"
+            className="bg-slate-custom text-slate-300 font-light placeholder-placeholder-color w-full p-2 border border-input-borders rounded focus:outline-none focus:border-button-color"
             required
           /></div>
           <div>
-          <p className="font-medium text-slate-200 mb-2">Date</p>
+          <p className="font-medium text-slate-300 text-sm mb-1">Date</p>
           <input
             type="date"
             value={date}

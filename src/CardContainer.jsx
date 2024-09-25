@@ -29,9 +29,9 @@ export const CardContainer = ({ onPreviewClicked }) => {
     }, [fetchedData]);
 
     return (
-        <div>
-            <div className="flex mt-4 justify-center bg-[#0E0B14] max-w-screen-2xl mx-auto p-6 rounded-lg ring-4 ring-blue-500 ring-inset mb-4">
-                <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 bg-[#0E0B14] grid-rows-[1fr]">
+        <div className="bg-background-color min-h-screen">
+            <div className="flex mt-4 justify-center bg-background-color max-w-screen-2xl mx-auto p-6 rounded-lg ring-inset mb-4">
+                <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 bg-background-color grid-rows-[1fr]">
                     {/* Check if fetchedData is not empty before mapping */}
                     {fetchedData.length > 0 ? (
                         fetchedData.map((data, index) => (
