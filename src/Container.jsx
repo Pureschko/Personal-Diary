@@ -4,12 +4,13 @@ import { Button } from "./Button";
 export const DiaryEntryCard = props => (
     <div
         className={
-            "p-4 rounded-md w-full  max-w-lg  text-white bg-card-color"
+            "p-4 rounded-md w-full  max-w-lg  text-white bg-card-color h-2/3  overflow-scroll"
         }
+        // "p-4  border-cyan-600 border-4 rounded-md w-full max-w-lg h-2/3  overflow-scroll text-white bg-amber-400"
     >
         <h1 className="text-xl">{props.title}</h1>
         <h2>{props.entryDate}</h2>
-        <img src={props.imageUrl} className="rounded-md p-3" />
+        <img src={props.imageUrl} className="rounded-md  p-3" />
         <p>{props.entryContent}</p>
     </div>
 );
@@ -29,10 +30,12 @@ export const Modal = props => (
     >
         {props.children}
 
-        <Button
-            title="Close"
-            onClicked={props.onCloseClicked}
-            className="bg-cyan-600"
-        />
+        <div className="relative">
+            <Button
+                title="Close"
+                onClicked={props.onCloseClicked}
+                className="bg-cyan-600 absolute  -top-80 right-2"
+            />
+        </div>
     </div>
 );

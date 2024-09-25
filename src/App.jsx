@@ -14,7 +14,7 @@ export default function App() {
             </header>
 
             {/* passing props to control visibility of modal, diary entry and 
-            on close button to update hidden state*/}
+            on close button to update hidden state SE*/}
             <DiaryEntryCardModal
                 isHidden={isDiaryEntryCardHidden}
                 prevEntryId={prevEntryId}
@@ -28,6 +28,8 @@ export default function App() {
                     gap: "10px",
                 }}
             >
+                {/* when preview button is clicked set the entry id to local storage 
+                and show diary entry card  SE */}
                 <CardContainer
                     onPreviewClicked={entryId => {
                         setPrevEntryId(entryId);

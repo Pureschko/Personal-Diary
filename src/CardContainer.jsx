@@ -7,6 +7,9 @@ export const CardContainer = ({ onPreviewClicked }) => {
     // FIXME naming
     const [fetchedData, setFetchedData] = useState([]); // Initialize with an empty array
 
+    // here we get all the keys from the local storage as an array
+    // then we iterate over the keys in the array
+    // and  retrieve the corresponding value for that key from localStorage.
     const readDiaryEntries = async () => {
         try {
             const diaryEntries = Object.keys(localStorage)
