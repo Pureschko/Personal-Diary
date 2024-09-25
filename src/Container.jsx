@@ -33,7 +33,7 @@ export const Modal = props => (
             <Button
                 title="Close"
                 onClicked={props.onCloseClicked}
-                className="bg-cyan-600 absolute  -top-80 right-2"
+                className="bg-button-color absolute  -top-[21rem] right-2"
             />
         </div>
     </div>
