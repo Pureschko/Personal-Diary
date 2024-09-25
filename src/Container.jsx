@@ -6,7 +6,6 @@ export const DiaryEntryCard = props => (
         className={
             "p-4 rounded-md w-full  max-w-lg  text-white bg-card-color h-2/3  overflow-scroll"
         }
-        // "p-4  border-cyan-600 border-4 rounded-md w-full max-w-lg h-2/3  overflow-scroll text-white bg-amber-400"
     >
         <h1 className="text-xl">{props.title}</h1>
         <h2>{props.entryDate}</h2>
@@ -20,8 +19,8 @@ export const Modal = props => (
         style={{
             background: "rgba(24, 26, 42, 0.8)",
             boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
-            backdropFilter: "blur(7.2px)", // CSS backdrop filter for frosted effect
-            WebkitBackdropFilter: "blur(7.2px)", // Safari-specific prefix
+            backdropFilter: "blur(7.2px)",
+            WebkitBackdropFilter: "blur(7.2px)",
             zIndex: 1000,
         }}
         className={`${
