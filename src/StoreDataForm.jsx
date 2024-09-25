@@ -7,19 +7,19 @@ const StoreDataForm = ({ onClose }) => {
     const [content, setContent] = useState("");
     const [date, setDate] = useState(new Date().toISOString().slice(0, 10)); // Set current date
 
+    // FIXME naming
     // Function for adding a new publication
     const addPost = () => {
         // Create a new post
         const newPost = {
+            id: Date.now(),
             title,
             imageUrl,
             content,
             date,
         };
 
-        const storedData = JSON.parse(localStorage.getItem("diaryData")) || []; // Get current records from localStorage
-        const updatedData = [...storedData, newPost]; // Add a new post to existing entries
-        localStorage.setItem("diaryData", JSON.stringify(updatedData)); // Update localStorage with new data
+        localStorage.setItem(newPost.id, JSON.stringify(newPost));
 
         // Clear form fields
         setTitle("");
