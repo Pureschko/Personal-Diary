@@ -4,11 +4,11 @@ import { Button } from "./Button";
 export const DiaryEntryCard = props => (
     <div
         className={
-            "p-4 border-cyan-600 border-4 rounded-md w-full  max-w-lg text-white bg-amber-400"
+            "p-4  border-cyan-600 border-4 rounded-md w-full  max-w-lg  text-white bg-amber-400"
         }
     >
         <h1 className="text-xl">{props.title}</h1>
-        <h2>{props.entryDate.toLocaleDateString("de-DE")}</h2>
+        <h2>{props.entryDate}</h2>
         <img src={props.imageUrl} className="rounded-md p-3" />
         <p>{props.entryContent}</p>
     </div>
@@ -27,7 +27,7 @@ export const Modal = props => (
         }}
         className={`${
             props.isHidden ? "hidden" : ""
-        } fixed inset-0 flex justify-center items-center`}
+        } fixed inset-0 flex justify-center  items-center`}
     >
         {props.children}
 
