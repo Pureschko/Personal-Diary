@@ -23,6 +23,7 @@ export const Modal = props => (
             backdropFilter: "blur(7.2px)", // CSS backdrop filter for frosted effect
             WebkitBackdropFilter: "blur(7.2px)", // Safari-specific prefix
             border: "1px solid rgba(255, 255, 255, 0.3)",
+            zIndex: 1000,
         }}
         className={`${
             props.isHidden ? "hidden" : ""
