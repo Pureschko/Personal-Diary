@@ -1,11 +1,11 @@
-import { DiaryEntryCard, Modal } from "./Container";
-
 import { CardContainer } from "./CardContainer";
+import { DiaryEntryCardModal } from "./DiaryEntryCardModal.jsx";
 import Nav from "./Nav.jsx";
 import { useState } from "react";
 
 export default function App() {
     const [isDiaryEntryCardHidden, setIsDiaryEntryCardHidden] = useState(true);
+    const [prevEntryId, setPrevEntryId] = useState();
 
     return (
         <div>
@@ -13,17 +13,13 @@ export default function App() {
                 <Nav />
             </header>
 
-            <Modal
+            {/* passing props to control visibility of modal, diary entry and 
+            on close button to update hidden state*/}
+            <DiaryEntryCardModal
                 isHidden={isDiaryEntryCardHidden}
+                prevEntryId={prevEntryId}
                 onCloseClicked={() => setIsDiaryEntryCardHidden(true)}
-            >
-                <DiaryEntryCard
-                    title="Your Diary Entry"
-                    entryDate={new Date()}
-                    imageUrl="/assets/image1.jpg"
-                    entryContent="Sunt officia do minim et nostrud dolore nulla ut sint quis qui est. Dolor id do nisi ea nulla aliquip deserunt voluptate non. Culpa et cupidatat adipisicing consequat enim sunt commodo proident ex est ad consectetur quis sit. Ea Lorem occaecat proident nisi ullamco laborum. Adipisicing do duis qui aliqua nulla deserunt exercitation cillum anim laboris reprehenderit incididunt cupidatat consectetur. Do duis laboris velit elit deserunt. Exercitation ad ullamco ullamco fugiat ut elit incididunt id proident do ut."
-                />
-            </Modal>
+            />
 
             <main
                 style={{
@@ -34,7 +30,7 @@ export default function App() {
             >
                 <CardContainer
                     onPreviewClicked={entryId => {
-                        console.log(entryId);
+                        setPrevEntryId(entryId);
                         setIsDiaryEntryCardHidden(false);
                     }}
                 />
