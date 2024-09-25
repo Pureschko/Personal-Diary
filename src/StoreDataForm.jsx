@@ -17,7 +17,7 @@ const StoreDataForm = ({ onClose }) => {
     };
 
     const storedData = JSON.parse(localStorage.getItem('diaryData')) || []; // Get current records from localStorage
-    const updatedData = [...storedData, newPost]; // Add a new post to existing entries
+    const updatedData = [newPost, ...storedData]; // Add a new post to existing entries
     localStorage.setItem('diaryData', JSON.stringify(updatedData)); // Update localStorage with new data
 
     // Clear form fields
@@ -38,57 +38,63 @@ const StoreDataForm = ({ onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center" onClick={onClose}>
-      <div className="relative bg-white p-6 rounded-lg" onClick={(e) => e.stopPropagation()}>
-        <form className="space-y-4 p-6 rounded"
+    <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center" onClick={onClose}>
+      <div className="relative bg-card-color p-6 rounded-lg w-[50vw] max-w-lg" onClick={(e) => e.stopPropagation()}>
+        <form className="space-y-6 p-6 rounded"
           onSubmit={handleSubmit} // Use handleSubmit to handle form submission
         >
-          <h2 className="text-2xl font-bold mb-4 text-gray-800 text-center">Add publication</h2>
-          <p className="font-bold text-gray-800 mb-1">Title</p>
+          <h2 className="text-2xl font-semibold mb-4 text-slate-200 text-center">Add publication</h2>
+          <div>
+          <p className="font-medium text-slate-200 mb-2">Title</p>
           <input
             type="text"
             placeholder="Title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
+            className="bg-slate-custom text-slate-200 font-light placeholder-placeholder-color w-full p-2 border border-input-borders rounded focus:outline-none focus:border-button-color"
             required
-          />
-          <p className="font-bold text-gray-800 mb-1">Picture</p>
+          /></div>
+          <div>
+          <p className="font-medium text-slate-200 mb-2">Picture</p>
           <input
             type="text"
             placeholder="URL picture"
             value={imageUrl}
             onChange={(e) => setImageUrl(e.target.value)}
-            className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
+            className="bg-slate-custom text-slate-200 font-light placeholder-placeholder-color w-full p-2 border border-input-borders rounded focus:outline-none focus:border-button-color"
             required
-          />
-          <p className="font-bold text-gray-800 mb-1">Content</p>
+          /></div>
+          <div>
+          <p className="font-medium text-slate-200 mb-2">Content</p>
           <input
             type="text"
             placeholder="Add text"
             value={content}
             onChange={(e) => setContent(e.target.value)}
-            className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
+            className="bg-slate-custom text-slate-200 font-light placeholder-placeholder-color w-full p-2 border border-input-borders rounded focus:outline-none focus:border-button-color"
             required
-          />
-          <p className="font-bold text-gray-800 mb-1">Date</p>
+          /></div>
+          <div>
+          <p className="font-medium text-slate-200 mb-2">Date</p>
           <input
             type="date"
             value={date}
             onChange={(e) => setDate(e.target.value)}
-            className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500"
+            className="bg-slate-custom text-slate-200 font-light w-full p-2 border border-input-borders rounded focus:outline-none focus:border-button-color"
             required
-          />
+          /></div>
+          <div className="flex justify-center">
           <button
             type="submit"
-            className="bg-cyan-600 text-white py-2 px-4 rounded hover:bg-cyan-800 transition-colors"
+            className="bg-button-color font-normal text-white py-2 px-8 rounded-md hover:bg-button-hover transition-colors mt-6"
           >
             Add publication
           </button>
+          </div>
         </form>
         <button
           onClick={onClose}
-          className="absolute top-2 right-2 bg-gray-200 hover:bg-gray-300 text-gray-600 rounded-full w-8 h-8 flex items-center justify-center"
+          className="absolute top-2 right-2 bg-card-color  hover:bg-card-color text-slate-200 rounded-full w-12 h-12 flex items-center justify-center"
         >
           ✕
         </button>
