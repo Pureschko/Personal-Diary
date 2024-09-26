@@ -7,10 +7,12 @@ export const DiaryEntryCard = props => (
             "p-4 rounded-md w-full  max-w-lg  text-white bg-card-color h-2/3  overflow-scroll"
         }
     >
-        <h1 className="text-xl">{props.title}</h1>
-        <h2>{props.entryDate}</h2>
-        <img src={props.imageUrl} className="rounded-md  p-3" />
-        <p>{props.entryContent}</p>
+        <h1 className="text-xl font-semibold ml-3 mt-2">{props.title}</h1>
+        <h2 className="text-sm text-slate-400 ml-3 mt-1" >{props.entryDate}</h2>
+        <div className="p-3">
+    <img src={props.imageUrl} className="rounded-lg" />
+</div>
+        <p className="ml-3">{props.entryContent}</p>
     </div>
 );
 

@@ -13,6 +13,7 @@ export const CardContainer = ({ onPreviewClicked }) => {
     const readDiaryEntries = async () => {
         try {
             const diaryEntries = Object.keys(localStorage)
+            .sort((a, b) => Number(b) - Number(a))
                 .map(key => localStorage.getItem(key))
                 .map(JSON.parse);
 
@@ -50,7 +51,7 @@ export const CardContainer = ({ onPreviewClicked }) => {
                             />
                         ))
                     ) : (
-                        <p>No diary entries found.</p> // Message when there's no data
+                        <p className="text-white">Oops! No diary entries found</p> // Message when there's no data
                     )}
                 </div>
             </div>
